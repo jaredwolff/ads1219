@@ -1,0 +1,22 @@
+#
+#Copyright(c) 2022 Circuit Dojo LLC
+#
+#SPDX - License - Identifier : Apache - 2.0
+#
+
+menuconfig ADC_ADS1219
+	bool "TI ADS1219 ADC Driver"
+	depends on I2C
+	select ADC
+	help
+	  Enable I2C-based driver for ADS1219 based RTC
+
+config ADC_ADS1219_ADC_CHANNEL_COUNT
+	int "Number of ADC channels"
+	depends on ADC_ADS1219
+	range 1 4
+	default 1
+	help
+	  Number of ADC channels to be supported by the driver. Each channel
+	  needs a dedicated structure in RAM that stores the ADC settings
+	  to be used when sampling this channel.
